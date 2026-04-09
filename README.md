@@ -1,18 +1,36 @@
-# React + Vite
+FRONT
+SRC
+•	ASSETS.
+•	Componentes
+•	Context
+•	Pages
+		1. admin
+		2. users
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+ROUTES
+•	LOGIN: input para introducir usuario y contraseña.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+•	ADMIN:
 
-## React Compiler
+o	Nav:
+	Home
+	Historial de pedidos
+	Mi perfil
+	Cerrar sesión
+o	/ADMIN/HOME :  con listado de propuestas activas y input para subir archivo nuevo con nueva propuesta. 
+o	/ ADMIN /HISTORY: con listado de pedidos realizados y opción de descargar
+o	/ ADMIN /HISTORIAL/:ID: pedido realizado por el usuario y opción de descargar
+o	/ ADMIN /PERFIL : nombre, email, pedidos realizados total, pedidos pendientes:
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+•	USERS
+o	Nav:
+	Home
+	Historial de pedidos
+	Mi perfil
+	Cerrar sesión
+o	/USER/HOME :  con listado de propuestas activos 
+o	/USER/HISTORIAL: con listado de pedidos realizados por usuario
+o	/USER/HISTORIAL/:ID: pedido realizado por el usuario
+o	/USER/PERFIL: nombre, email, pedidos realizados total, pedidos pendientes:
 
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

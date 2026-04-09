@@ -6,7 +6,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
-    const { setUser, setIsLoading } = useBasic();
+    const { setUser, setIsLoading, setUserData } = useBasic();
 
 
     const handleSubmit = async (e) => {
@@ -33,8 +33,9 @@ const Login = () => {
                             credentials: 'include'
                         });
                         if (findresponse.ok) {
-                            const adminData = await findresponse.json();
-                                if (adminData.admin === true) {
+                            const Data = await findresponse.json();
+                            setUserData(Data);
+                                if (Data.admin === true) {
                                     window.location.href = '/admin';
                                 } else {
                                     window.location.href = '/';

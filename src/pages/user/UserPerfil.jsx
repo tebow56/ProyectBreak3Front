@@ -1,7 +1,10 @@
+import ModeloPerfil from "../../components/ModeloPerfil";
+
+
 const UserPerfil = () => {
     return (
         <div>
-            <h1>Perfil</h1>
+            <ModeloPerfil />
         </div>
     )
 }

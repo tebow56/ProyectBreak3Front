@@ -1,7 +1,9 @@
+import ModeloPerfil from "../../components/ModeloPerfil";
+
 const AdminPerfil = () => {
     return (
         <div>
-            <h1>Perfil</h1>
+            <ModeloPerfil />
         </div>
     )
 }
