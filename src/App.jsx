@@ -4,10 +4,14 @@ import './App.css'
 import UserHome from './pages/user/UserHome'
 import UserHistorial from './pages/user/UserHistorial'
 import UserPerfil from './pages/user/UserPerfil'
-import Login from './pages/user/Login'
+import Login from './pages/Login'
 import Root from './pages/user/Root'
 import { AuthProvider } from './context/authContext'
 import { BasicProvider } from './context/basicContext'
+import AdminRoot from './pages/admin/AdminRoot'
+import AdminHome from './pages/admin/AdminHome'
+import AdminHistorial from './pages/admin/AdminHistorial'
+import AdminPerfil from './pages/admin/AdminPerfil'
 
 function App() {
 
@@ -26,6 +30,15 @@ function App() {
           <Route index element={<UserHome />} />
           <Route path="/historial" element={<UserHistorial />} />
           <Route path="/perfil" element={<UserPerfil />} />
+        </Route>
+                <Route path="/admin" element={
+          <AuthProvider>
+            <AdminRoot />
+          </AuthProvider>
+        }>
+          <Route index element={<AdminHome />} />
+          <Route path="/admin/historial" element={<AdminHistorial />} />
+          <Route path="/admin/perfil" element={<AdminPerfil />} />
         </Route>
       </Routes>
     </Router>

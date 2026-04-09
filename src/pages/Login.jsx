@@ -1,5 +1,6 @@
-import { useState } from 'react'
-import { useBasic } from '../../context/basicContext';
+import { useState, useEffect } from 'react'
+import { useBasic } from '../context/basicContext';
+
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -19,24 +20,38 @@ const Login = () => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    credentials: 'include', // Importante para cookies
+                    credentials: 'include', 
                     body: JSON.stringify({ email, password })
                 });
                 
                 if (response.ok) {
                     const userData = await response.json();
                     setUser(userData);
-                    window.location.href = '/'; // Redirige al home
-                } else {
+                    const findUser = async (email) => {
+                        try {
+                        const findresponse= await fetch(`http://localhost:3003/API/users/getbyemail/${email}`, {
+                            credentials: 'include'
+                        });
+                        if (findresponse.ok) {
+                            const adminData = await findresponse.json();
+                                if (adminData.admin === true) {
+                                    window.location.href = '/admin';
+                                } else {
+                                    window.location.href = '/';
+                                }
+                            }
+                        } catch (error) {
+                                    console.error('Error fetching admin data:', error);
+                                }
+                            }
+                    findUser(email);
+                    } else {
                     const data = await response.json();
                     setError(data.message || 'Error al iniciar sesión');
                 }
             } catch (error) {
                 console.error('Error:', error);
                 setError('Error de conexión');
-                return (<div>
-                    <p>{error}</p>
-                </div> )
             } finally {
                 setIsLoading(false);
             }
@@ -58,13 +73,15 @@ const Login = () => {
             if (response.ok) {
                 const userData = await response.json();
                 setUser(userData);
-                window.location.href = '/'; // Redirige al home
+                window.location.href = '/'; 
             }
         } catch (error) {
             console.error('Error checking session:', error);
         }
     };
-    checkSession();
+    useEffect(() => {
+        checkSession();
+    }, [window.location.href]);
 
     return (
         <div>

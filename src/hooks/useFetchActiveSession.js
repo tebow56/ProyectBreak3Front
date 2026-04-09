@@ -4,7 +4,7 @@ import { useBasic } from "../context/basicContext";
 
 
 const useFetchActiveSession = () => {
-    const { user, setUser, isLoading, setIsLoading } = useBasic();
+    const { setUser, setIsLoading } = useBasic();
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -16,10 +16,13 @@ const useFetchActiveSession = () => {
                     const userData = await response.json();
                     setUser(userData);
                 } else {
+                    if (window.location.pathname !== '/login') {
                     window.location.href = '/login';
+                    } else {
+                    window.location.href = '/';
                     setUser(null);
                 }}
-                
+            }
                 catch (error) {
                     console.error('Error fetching user:', error);
                     setUser(null);

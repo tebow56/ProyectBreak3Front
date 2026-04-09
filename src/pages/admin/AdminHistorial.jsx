@@ -1,6 +1,6 @@
 import { useBasic } from "../../context/basicContext";
 
-const UserHistorial = () => {
+const AdminHistorial = () => {
     const { user } = useBasic();
     return (
         <div>
@@ -9,4 +9,4 @@ const UserHistorial = () => {
     )
 }
 
-export default UserHistorial
+export default AdminHistorial
