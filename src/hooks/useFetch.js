@@ -6,20 +6,25 @@ const useFetch = (url)=> {
 
 
     useEffect (() =>{
-       const fetchdata = async () => {
+       const fetchData = async () => {
         try {
-            const response = await fetch(url)
+            const response = await fetch(url, {
+                method: 'GET',
+                credentials: 'include'
+                })
             const newData = await response.json()
             setData(newData)
         } catch (error) {
             console.log (error)
         } 
-        fetchdata()
-    }}, [url])
+    }
+    if (url) {
+        fetchData();
+    }
+    }, [url])
 
     return {data}
     
 };
 
-
-export default useFetch
+export default useFetch 

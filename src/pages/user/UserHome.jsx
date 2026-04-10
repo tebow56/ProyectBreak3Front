@@ -3,14 +3,13 @@ import { useState, useEffect } from "react";
 
 
 const UserHome = () => {
-        const [data, setData] = useState([]);
-
-    useEffect(() => {
-        getdata();
-    }, []);
+    const [data, setData] = useState([]);
     const getdata = async () => {
         try {
-            const response = await fetch('http://localhost:3003/API/proposals');
+            const response = await fetch('http://localhost:3003/API/proposals', {
+                method: 'GET',
+                credentials: 'include'
+            });
             const data = await response.json();
             setData(data);
             console.log(data)
@@ -20,9 +19,9 @@ const UserHome = () => {
             return [];
         }
     };
-
-
-   
+        useEffect(() => {
+        getdata();
+    }, []);
 
     return (
         <div>

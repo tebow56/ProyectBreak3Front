@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route, data} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import './App.css'
 import UserHome from './pages/user/UserHome'
@@ -12,6 +12,8 @@ import AdminRoot from './pages/admin/AdminRoot'
 import AdminHome from './pages/admin/AdminHome'
 import AdminHistorial from './pages/admin/AdminHistorial'
 import AdminPerfil from './pages/admin/AdminPerfil'
+import UserProposal from './pages/user/UserProposal'
+import AdminProposal from './pages/admin/AdminProposal'
 
 function App() {
 
@@ -28,6 +30,7 @@ function App() {
           </AuthProvider>
         }>
           <Route index element={<UserHome />} />
+          <Route path= "/propuestas/:proposalId" element={<UserProposal/> } />
           <Route path="/historial" element={<UserHistorial />} />
           <Route path="/perfil" element={<UserPerfil />} />
         </Route>
@@ -37,6 +40,7 @@ function App() {
           </AuthProvider>
         }>
           <Route index element={<AdminHome />} />
+          <Route path= "/admin/propuestas/:proposalId" element={<AdminProposal/> } />
           <Route path="/admin/historial" element={<AdminHistorial />} />
           <Route path="/admin/perfil" element={<AdminPerfil />} />
         </Route>
