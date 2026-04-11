@@ -1,10 +1,12 @@
 import { Outlet, Link } from 'react-router-dom';
 import { useBasic } from "../../context/basicContext";
+import { useNavigate } from 'react-router-dom';
 
 
 
 const AdminRoot = () =>     {
     const { user, setUser, isLoading, setIsLoading } = useBasic();
+    const navigate = useNavigate();
 
     const logout = async () => {
         try {
@@ -14,7 +16,7 @@ const AdminRoot = () =>     {
             });
             if (response.ok) {
                 setUser(null);
-                window.location.href = '/login';
+                navigate('/login');
             } else {
                 console.error('Error al cerrar sesión');
             }} catch (error) {
@@ -26,11 +28,11 @@ const AdminRoot = () =>     {
         return (
             <>
                 <header>
-                    <nav id= 'navBar'>
-                        <Link to="/admin">Home</Link>
-                        <Link to="/admin/historial">Historial</Link>
-                        <Link to="/admin/perfil">Perfil</Link>
-                        <Link to="/login" onClick={logout}>
+                    <nav id= 'navBar' style={{backgroundColor: '#9a1df367', display: 'flex', justifyContent: 'space-around', padding: '10px'}}>
+                        <Link to="/admin" className='link'>Home</Link>
+                        <Link to="/admin/historial" className='link'>Historial</Link>
+                        <Link to="/admin/perfil" className='link'>Perfil</Link>
+                        <Link to="/login" className='link' onClick={logout}>
                             Cerrar sesión
                         </Link>
                     </nav>

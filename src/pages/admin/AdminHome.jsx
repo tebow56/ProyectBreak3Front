@@ -24,8 +24,8 @@ const AdminHome = () => {
 
     return (
         <div>
-            <h1>Home</h1>
-            <ListadoPropuestasAdmin data={data} />
+            <h1>Inicio</h1>
+            <ListadoPropuestasAdmin data={data} refreshData={getdata} />
         </div>
     )
 }

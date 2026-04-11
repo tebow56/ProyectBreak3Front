@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useBasic } from '../context/basicContext';
-
+import { useNavigate } from 'react-router-dom';
+import milogo from '../assets/logolabotica(1).jpg'
 
 
 
 const Login = () => {
     const [email, setEmail] = useState('');
+    const navigate = useNavigate();
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const { setUser, setIsLoading, setUserData } = useBasic();
@@ -38,9 +40,9 @@ const Login = () => {
                             const Data = await findresponse.json();
                             setUserData(Data);
                                 if (Data.admin === true) {
-                                    window.location.href = '/admin';
+                                    navigate('/admin');
                                 } else {
-                                    window.location.href = '/';
+                                    navigate('/');
                                 }
                             }
                         } catch (error) {
@@ -76,7 +78,7 @@ const Login = () => {
             if (response.ok) {
                 const userData = await response.json();
                 setUser(userData);
-                window.location.href = '/'; 
+                navigate(userData.admin ? '/admin' : '/'); 
             }
         } catch (error) {
             console.error('Error checking session:', error);
@@ -84,20 +86,23 @@ const Login = () => {
     };
     useEffect(() => {
         checkSession();
-    }, [window.location.href]);
+    }, [navigate]);
 
     return (
         <div>
+            <img src={milogo} alt="Logo"  style={{width: '200px', height: 'auto'}}/>
             <h1>Iniciar sesión</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '300px', margin: '0 auto' }}>
                 <label htmlFor="email">Email</label>
                 <input type="email" onChange={handleEmailChange} id="email" placeholder="Escribe tu email" required/>
                 <label htmlFor="password">Contraseña</label>
                 <input type="password" onChange={handlePasswordChange} id="password" placeholder="Escribe tu contraseña" required/>
-                <button type="submit">Iniciar sesión</button>
+                <button type="submit" style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Iniciar sesión</button>
             </form>
         </div>
     )
 }
 
 export default Login
+
+

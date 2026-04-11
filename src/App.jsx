@@ -12,8 +12,9 @@ import AdminRoot from './pages/admin/AdminRoot'
 import AdminHome from './pages/admin/AdminHome'
 import AdminHistorial from './pages/admin/AdminHistorial'
 import AdminPerfil from './pages/admin/AdminPerfil'
-import UserProposal from './pages/user/UserProposal'
-import AdminProposal from './pages/admin/AdminProposal'
+import UserProposal from './pages/user/UserPropuesta'
+import AdminProposal from './pages/admin/AdminPropuestas'
+import AdminNuevaPropuesta from './pages/admin/AdminNuevaPropuesta'
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
           </AuthProvider>
         }>
           <Route index element={<AdminHome />} />
+          <Route path="/admin/propuestas/nueva" element={<AdminNuevaPropuesta />} />
           <Route path= "/admin/propuestas/:proposalId" element={<AdminProposal/> } />
           <Route path="/admin/historial" element={<AdminHistorial />} />
           <Route path="/admin/perfil" element={<AdminPerfil />} />

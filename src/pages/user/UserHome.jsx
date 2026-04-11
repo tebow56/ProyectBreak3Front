@@ -1,4 +1,4 @@
-import ListadoPropuestas from "../../components/ListadoPropuestasUsers"
+import ListadoPropuestasUsers from "../../components/ListadoPropuestasUsers"
 import { useState, useEffect } from "react";
 
 
@@ -25,8 +25,8 @@ const UserHome = () => {
 
     return (
         <div>
-            <h1>Home</h1>
-            <ListadoPropuestas data={data} />
+            <h1>Inicio</h1>
+            <ListadoPropuestasUsers data={data} refresh={getdata} />
         </div>
     )
 }

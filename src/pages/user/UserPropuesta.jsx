@@ -25,7 +25,7 @@ const UserPoposal = () => {
         e.preventDefault();
 
         const itemsParaEnviar = articulo
-            .filter(item => unidades[item.cn] > 0) // Solo enviamos si hay cantidad
+            .filter(item => unidades[item.cn] > 0) 
             .map(item => ({
                 cn: item.cn,                
                 descripcion: item.descripcion, 
@@ -55,13 +55,13 @@ const UserPoposal = () => {
     return (
         <div style={{ padding: '20px' }}>
             <h1>{nombre}</h1>
-            <div style={{ display: 'flex',justifyContent: 'space-evenly', gap: '10px', fontWeight: 'bold', marginBottom: '10px' }}>
+            <div style={{ display: 'flex',justifyContent: 'space-evenly', gap: '20px', fontWeight: 'bold', marginBottom: '10px' }}>
             <p>CN</p><p>Descripción</p><p>Unidades</p>
              </div>
             <form onSubmit={handleSubmit}>
                 {articulo && articulo.map((item) => (
                     <div key={item.cn} style={{ marginBottom: '15px', borderBottom: '1px solid #eee', paddingBottom: '10px' }}>
-                        <strong style={{ marginRight: '10px',display: 'inline-block', minWidth: '150px' }}>{item.cn}</strong>
+                        <strong style={{ marginRight: '10px',display: 'inline-block', minWidth: '250px' }}>{item.cn}</strong>
                         <span style={{ marginRight: '20px', display: 'inline-block', minWidth: '400px', textAlign: 'left'    }}>{item.descripcion}</span>
                         
                         <input 

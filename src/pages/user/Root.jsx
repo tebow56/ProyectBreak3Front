@@ -26,11 +26,11 @@ const logout = async () => {
     return (
         <>
             <header>
-                <nav id= 'navBar'>
-                    <Link to="/">Home</Link>
-                    <Link to="/Historial">Historial</Link>
-                    <Link to="/Perfil">Perfil</Link>
-                    <Link to="/login" onClick={logout}>
+                <nav id= 'navBar' style={{backgroundColor: '#9a1df367', display: 'flex', justifyContent: 'space-around', padding: '10px'}}>
+                    <Link to="/" className='link'>Inicio</Link>
+                    <Link to="/Historial" className='link'>Historial</Link>
+                    <Link to="/Perfil" className='link'>Perfil</Link>
+                    <Link to="/login" className='link' onClick={logout}>
                         Cerrar sesión
                     </Link>
                 </nav>

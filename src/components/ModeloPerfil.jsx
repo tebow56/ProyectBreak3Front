@@ -2,13 +2,14 @@ import { useBasic } from "../context/basicContext";
 
 
 const ModeloPerfil = () => {
-    const { userData } = useBasic();
+    const { user } = useBasic();
+    console.log(user)
     return (
         <div>
             <h1>Perfil</h1>
-            {userData && (
+            {user && (
                 <div>
-                    <p><strong>Email:</strong> {userData.email}</p>
+                    <p><strong>Email:</strong> {user.email}</p>
                 </div>
             )}
         </div>

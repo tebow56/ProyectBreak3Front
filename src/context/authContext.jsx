@@ -1,6 +1,8 @@
 
 import { createContext, useContext, useState, useEffect } from "react";
 import { useBasic } from "./basicContext";
+import { useNavigate, useLocation } from "react-router-dom";
+
 
 
 
@@ -13,6 +15,8 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
         const { user, setUser, isLoading, setIsLoading } = useBasic();
+        const navigate = useNavigate();
+        const location = useLocation();
 
         useEffect(() => {
             const fetchUser = async () => {
@@ -21,13 +25,21 @@ export const AuthProvider = ({ children }) => {
                         credentials: 'include'
                     });
                     if (response.ok) {
+                        
                         const userData = await response.json();
                         setUser(userData);
+                            if (userData.admin && location.pathname !== '/admin') {
+                                navigate('/admin');
+                            } else if (userData.admin === true && location.pathname === '/admin') {
+                                navigate(location.pathname, { replace: true });
+                            }   else {
+                                navigate(location.pathname, { replace: true });
+                            }
                     } else {
-                        window.location.href = '/login';
-                        setUser(null);
-                    }}
-                    
+                            navigate('/login');
+                            setUser(null);
+                        }
+                    }
                     catch (error) {
                         console.error('Error fetching user:', error);
                         setUser(null);

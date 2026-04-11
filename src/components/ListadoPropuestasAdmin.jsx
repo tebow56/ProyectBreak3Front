@@ -1,23 +1,70 @@
 import { Link } from "react-router-dom";
 
-const ListadoPropuestasAdmin = ({ data }) => {
+
+const ListadoPropuestasAdmin = ({ data, refreshData }) => {
+    const handleToggleStatus = (proposal) => {
+        const updateFetch = async ()=> {
+            const proposalid = proposal._id
+            const newStatus = proposal.activo === false ? true : false
+            console.log(proposalid, newStatus)
+            try {
+            const response = await fetch (`http://localhost:3003/API/proposals/${proposalid}`, {
+                method: 'PUT',
+                credentials: 'include',
+                body: JSON.stringify({ activo: newStatus }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (response.ok) {
+                refreshData();
+            } else {
+                console.error('Error al actualizar el estado de la propuesta');
+            }} catch (error) {
+                console.error('Error actualizando el estado:', error)
+            }
+        }
+        updateFetch()
+    }
+
+    const handleDeleteProposal = (proposalId) => {
+        const deleteFetch = async () => {
+            try {
+                const respone = await fetch(`http://localhost:3003/API/proposals/${proposalId}`, {
+                    method: 'DELETE',
+                    credentials: 'include'
+                });
+                if (respone.ok) {refreshData();
+                } else {
+                    console.error('Error al eliminar la propuesta');
+                }
+            } catch (error) {
+                console.error('Error eliminando la propuesta:', error);
+            }
+        };
+        deleteFetch();
+    };
+
+
     return (
         <div style={{ padding: '20px' }}> 
             <h2>Listado de Propuestas</h2>
             <ul className="listadoPropuestas" style={{listStyle:"none"}}>
                 {data.map((proposal) => ( 
                     <li key={proposal._id} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
-                        <h3><Link to={`/admin/propuestas/${proposal._id}`}>{proposal.nombre}</Link></h3>
+                        <h3><Link className="link" to={`/admin/propuestas/${proposal._id}`}>{proposal.nombre}</Link></h3>
                         <p>{proposal.description}</p>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'space-between' }}>
-                        <p style={proposal.status === "false" ? { backgroundColor: "#15ff0085" } : { backgroundColor: "#ff37008f" }}>
-                            {proposal.status === "false" ? "Aprobada" : "Pendiente"}</p>
-                        <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }} onClick={() => { }}> Cambiar</button>
-                        <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}  onClick={() => { }}>Eliminar</button>
+                        <p style={proposal.activo === true ? { backgroundColor: "#15ff0085" } : { backgroundColor: "#ff37008f" }}>
+                            {proposal.activo === true ? "Activada" : "Desactivada"}</p>
+                        <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }} onClick={() => handleToggleStatus(proposal)}> Cambiar</button>
+                        <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}  onClick={() => handleDeleteProposal(proposal._id)}>Eliminar</button>
                         </div>
                     </li>
                 ))}
             </ul>
+            <h3> Crear una nueva propuesta</h3>
+            <Link className="link" to="/admin/propuestas/nueva" style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Crear Propuesta</Link>
         </div>
     )
 }
