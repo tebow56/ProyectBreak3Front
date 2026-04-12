@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Routes, Route, data} from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import './App.css'
 import UserHome from './pages/user/UserHome'
 import UserHistorial from './pages/user/UserHistorial'
@@ -19,7 +19,6 @@ import AltaCliente from './pages/AltaCliente'
 import UserPedido from './pages/user/UserPedido'
 import AdminPedido from './pages/admin/AdminPedido'
 
-const navigate =useNavigate()
 
 function App() {
 
