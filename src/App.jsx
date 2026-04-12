@@ -15,6 +15,7 @@ import AdminPerfil from './pages/admin/AdminPerfil'
 import UserProposal from './pages/user/UserPropuesta'
 import AdminProposal from './pages/admin/AdminPropuestas'
 import AdminNuevaPropuesta from './pages/admin/AdminNuevaPropuesta'
+import AltaCliente from './pages/AltaCliente'
 
 function App() {
 
@@ -25,15 +26,16 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={
+        <Route path="/altacliente" element= {<AltaCliente/>}/>
+        <Route path="/user" element={
           <AuthProvider>
             <Root />
           </AuthProvider>
         }>
           <Route index element={<UserHome />} />
-          <Route path= "/propuestas/:proposalId" element={<UserProposal/> } />
-          <Route path="/historial" element={<UserHistorial />} />
-          <Route path="/perfil" element={<UserPerfil />} />
+          <Route path= "/user/propuestas/:proposalId" element={<UserProposal/> } />
+          <Route path="/user/historial" element={<UserHistorial />} />
+          <Route path="/user/perfil" element={<UserPerfil />} />
         </Route>
                 <Route path="/admin" element={
           <AuthProvider>

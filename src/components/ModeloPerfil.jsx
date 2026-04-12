@@ -3,7 +3,6 @@ import { useBasic } from "../context/basicContext";
 
 const ModeloPerfil = () => {
     const { user } = useBasic();
-    console.log(user)
     return (
         <div>
             <h1>Perfil</h1>

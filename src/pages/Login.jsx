@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useBasic } from '../context/basicContext';
 import { useNavigate } from 'react-router-dom';
 import milogo from '../assets/logolabotica(1).jpg'
+import { Link } from 'react-router-dom';
 
 
 
@@ -42,7 +43,7 @@ const Login = () => {
                                 if (Data.admin === true) {
                                     navigate('/admin');
                                 } else {
-                                    navigate('/');
+                                    navigate('/user');
                                 }
                             }
                         } catch (error) {
@@ -98,6 +99,9 @@ const Login = () => {
                 <label htmlFor="password">Contraseña</label>
                 <input type="password" onChange={handlePasswordChange} id="password" placeholder="Escribe tu contraseña" required/>
                 <button type="submit" style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Iniciar sesión</button>
+                <Link to="/altacliente">
+                    <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#8705f9', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>Crear Usuario</button>
+                </Link>
             </form>
         </div>
     )

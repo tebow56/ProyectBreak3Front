@@ -9,7 +9,7 @@ const ListadoPropuestasUsers = ({ data }) => {
             <ul className="listadoPropuestas" style={{listStyle:"none"}}>
                 {newData.map((proposal) => ( 
                     <li key={proposal._id}>
-                        <h3><Link className="link" to={`/propuestas/${proposal._id}`}>{proposal.nombre}</Link></h3>
+                        <h3><Link className="link" to={`/user/propuestas/${proposal._id}`}>{proposal.nombre}</Link></h3>
                         <p>{proposal.description}</p>
                     </li>
                 ))}

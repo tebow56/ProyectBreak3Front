@@ -51,11 +51,10 @@ const ListadoPropuestasAdmin = ({ data, refreshData }) => {
             <h2>Listado de Propuestas</h2>
             <ul className="listadoPropuestas" style={{listStyle:"none"}}>
                 {data.map((proposal) => ( 
-                    <li key={proposal._id} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
-                        <h3><Link className="link" to={`/admin/propuestas/${proposal._id}`}>{proposal.nombre}</Link></h3>
-                        <p>{proposal.description}</p>
+                    <li key={proposal._id} style={{ display:"flex", flexDirection:"row", justifyContent:"space-around",border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
+                        <h3><Link className="link" to={`/admin/propuestas/${proposal._id}`}>{proposal.nombre} ({proposal.mes})</Link></h3>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'space-between' }}>
-                        <p style={proposal.activo === true ? { backgroundColor: "#15ff0085" } : { backgroundColor: "#ff37008f" }}>
+                        <p style={{borderRadius:'5px', backgroundColor: proposal.activo === true ? "#15ff0085" : "#ff37008f" }}>
                             {proposal.activo === true ? "Activada" : "Desactivada"}</p>
                         <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }} onClick={() => handleToggleStatus(proposal)}> Cambiar</button>
                         <button style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}  onClick={() => handleDeleteProposal(proposal._id)}>Eliminar</button>

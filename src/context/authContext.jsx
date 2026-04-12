@@ -2,6 +2,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useBasic } from "./basicContext";
 import { useNavigate, useLocation } from "react-router-dom";
+import miLogo from "../assets/logolabotica(1).jpg"
 
 
 
@@ -19,7 +20,9 @@ export const AuthProvider = ({ children }) => {
         const location = useLocation();
 
         useEffect(() => {
+            
             const fetchUser = async () => {
+                setIsLoading(true)
                     try {
                     const response = await fetch('http://localhost:3003/API/auth/active-session', {
                         credentials: 'include'
@@ -28,12 +31,10 @@ export const AuthProvider = ({ children }) => {
                         
                         const userData = await response.json();
                         setUser(userData);
-                            if (userData.admin && location.pathname !== '/admin') {
+                            if (userData.admin === true && !location.pathname.startsWith('/admin')) {
                                 navigate('/admin');
-                            } else if (userData.admin === true && location.pathname === '/admin') {
-                                navigate(location.pathname, { replace: true });
-                            }   else {
-                                navigate(location.pathname, { replace: true });
+                            } else if (userData.admin === false && location.pathname.startsWith('/admin')) {
+                                navigate ('/user');
                             }
                     } else {
                             navigate('/login');
@@ -49,8 +50,14 @@ export const AuthProvider = ({ children }) => {
 
             }
             fetchUser();
-        }, []);
-        
+        }, [location.pathname, navigate, setUser, setIsLoading]);
+        if (isLoading) {
+        return (    
+            <div>
+                <p>Cargando...</p>
+            </div>
+        );
+    }
 
     return (  
         <authContext.Provider value={{ user, setUser, isLoading, setIsLoading }}>
