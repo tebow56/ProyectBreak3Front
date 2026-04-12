@@ -1,15 +1,13 @@
 import { useParams } from "react-router-dom";
-
 import useFetch from "../../hooks/useFetch";
 import { CSVLink } from "react-csv";
 
 const AdminPedido = ()=>{
     const { orderId } = useParams();
-    const url = `https://glb-2wfb.onrender.com/orders/${orderId}`;
+    const url = `https://glb-2wfb.onrender.com/API/orders/${orderId}`;
     const { datafetch } = useFetch(url);
     
-    
-    console.log(datafetch)
+
     if (!datafetch) return <p>Cargando...</p>;
     
     const {laboratorio, articulo, createdAt,usuario} = datafetch
