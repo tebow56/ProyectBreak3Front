@@ -5,7 +5,7 @@ import HistorialUser from "../../components/ListadoHistorialUser";
 
 
 const UserHistorial = () => {
-    const url = 'http://localhost:3003/API/orders'
+    const url = 'https://glb-2wfb.onrender.com/API/orders'
     const { datafetch } = useFetch(url);
     const {user} = useBasic()
     const [orders,setOrders]=useState([])

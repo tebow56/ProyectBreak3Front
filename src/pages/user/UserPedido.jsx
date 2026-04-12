@@ -4,7 +4,7 @@ import useFetch from "../../hooks/useFetch";
 
 const UserPedido = ()=>{
     const { orderId } = useParams();
-    const url = `http://localhost:3003/API/orders/${orderId}`;
+    const url = `https://glb-2wfb.onrender.com/API/orders/${orderId}`;
     const { datafetch } = useFetch(url);
 
     if (!datafetch) return <p>Cargando...</p>;

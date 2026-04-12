@@ -5,7 +5,7 @@ import { CSVLink } from "react-csv";
 
 const AdminPedido = ()=>{
     const { orderId } = useParams();
-    const url = `http://localhost:3003/API/orders/${orderId}`;
+    const url = `https://glb-2wfb.onrender.com/orders/${orderId}`;
     const { datafetch } = useFetch(url);
     
     

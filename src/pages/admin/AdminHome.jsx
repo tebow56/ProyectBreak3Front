@@ -5,7 +5,7 @@ const AdminHome = () => {
     const [data, setData] = useState([]);
     const getdata = async () => {
         try {
-            const response = await fetch('http://localhost:3003/API/proposals', {
+            const response = await fetch('https://glb-2wfb.onrender.com/API/proposals', {
                 method: 'GET',
                 credentials: 'include'
             });

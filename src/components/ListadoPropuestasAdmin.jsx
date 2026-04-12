@@ -8,7 +8,7 @@ const ListadoPropuestasAdmin = ({ data, refreshData }) => {
             const newStatus = proposal.activo === false ? true : false
             console.log(proposalid, newStatus)
             try {
-            const response = await fetch (`http://localhost:3003/API/proposals/${proposalid}`, {
+            const response = await fetch (`https://glb-2wfb.onrender.com/API/proposals/${proposalid}`, {
                 method: 'PUT',
                 credentials: 'include',
                 body: JSON.stringify({ activo: newStatus }),
@@ -30,7 +30,7 @@ const ListadoPropuestasAdmin = ({ data, refreshData }) => {
     const handleDeleteProposal = (proposalId) => {
         const deleteFetch = async () => {
             try {
-                const respone = await fetch(`http://localhost:3003/API/proposals/${proposalId}`, {
+                const respone = await fetch(`https://glb-2wfb.onrender.com/API/proposals/${proposalId}`, {
                     method: 'DELETE',
                     credentials: 'include'
                 });

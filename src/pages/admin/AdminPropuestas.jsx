@@ -6,7 +6,7 @@ import { useBasic } from "../../context/basicContext";
 
 const UserPoposal = () => {
     const { proposalId } = useParams();
-    const url = `http://localhost:3003/API/proposals/${proposalId}`;
+    const url = `https://glb-2wfb.onrender.com/API/proposals/${proposalId}`;
     const { datafetch } = useFetch(url);
     const [unidades, setUnidades] = useState({});
     const { user } = useBasic();
@@ -40,7 +40,7 @@ const UserPoposal = () => {
 
 
         try {
-            await fetch(`http://localhost:3003/API/orders`, {
+            await fetch(`https://glb-2wfb.onrender.com/API/orders`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },

@@ -10,7 +10,7 @@ const AdminRoot = () =>     {
 
     const logout = async () => {
         try {
-            const response = await fetch('http://localhost:3003/API/auth/logout', {
+            const response = await fetch('https://glb-2wfb.onrender.com/API/auth/logout', {
                 method: 'POST',
                 credentials: 'include'
             });

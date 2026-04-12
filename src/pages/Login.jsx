@@ -20,7 +20,7 @@ const Login = () => {
             setError(null);
             
             try {
-                const response = await fetch('http://localhost:3003/API/auth/login', {
+                const response = await fetch('https://glb-2wfb.onrender.com/API/auth/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ const Login = () => {
                     setUser(uData);
                     const findUser = async (email) => {
                         try {
-                        const findresponse= await fetch(`http://localhost:3003/API/users/getbyemail/${email}`, {
+                        const findresponse= await fetch(`https://glb-2wfb.onrender.com/API/users/getbyemail/${email}`, {
                             credentials: 'include'
                         });
                         if (findresponse.ok) {
@@ -73,7 +73,7 @@ const Login = () => {
     
     const checkSession = async () => {
         try {
-            const response = await fetch('http://localhost:3003/API/auth/active-session', {
+            const response = await fetch('https://glb-2wfb.onrender.com/API/auth/active-session', {
                 credentials: 'include'
             });
             if (response.ok) {

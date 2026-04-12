@@ -6,7 +6,7 @@ const handleSubmit = async (e) => {
     try {
         const formData = new FormData(e.target);
 
-        const response = await fetch('http://localhost:3003/API/proposals', {
+        const response = await fetch('https://glb-2wfb.onrender.com/API/proposals', {
             method: 'POST',
             credentials: 'include',
             body: formData

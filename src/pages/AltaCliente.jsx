@@ -20,7 +20,7 @@ const AltaCliente = ()=> {
     useEffect(()=>{
         const useFetch =async ()=> {
             try {
-                const response = await fetch('http://localhost:3003/API/codes',{
+                const response = await fetch('https://glb-2wfb.onrender.com/API/codes',{
                     method: 'GET',
                     credentials: 'include', 
                     })
@@ -46,7 +46,7 @@ const handleSumbit = async (e)=>{
         return
     }
         try {
-            const response = await fetch ('http://localhost:3003/API/users/create', {
+            const response = await fetch ('https://glb-2wfb.onrender.com/API/users/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
