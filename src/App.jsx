@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import Root from './pages/user/Root'
 import { AuthProvider } from './context/authContext'
 import { BasicProvider } from './context/basicContext'
+import { useNavigate } from 'react-router-dom'
 import AdminRoot from './pages/admin/AdminRoot'
 import AdminHome from './pages/admin/AdminHome'
 import AdminHistorial from './pages/admin/AdminHistorial'
@@ -18,6 +19,8 @@ import AltaCliente from './pages/AltaCliente'
 import UserPedido from './pages/user/UserPedido'
 import AdminPedido from './pages/admin/AdminPedido'
 
+const navigate =useNavigate()
+
 function App() {
 
 
@@ -26,6 +29,7 @@ function App() {
     <BasicProvider>
     <Router>
       <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login />} />
         <Route path="/altacliente" element= {<AltaCliente/>}/>
         <Route path="/user" element={
