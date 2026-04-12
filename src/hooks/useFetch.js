@@ -13,7 +13,7 @@ const useFetch = (url)=> {
                 credentials: 'include'
                 })
             const newData = await response.json()
-            setData(newData)
+            setDatafetch(newData)
         } catch (error) {
             console.log (error)
         } 

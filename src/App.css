@@ -183,6 +183,129 @@
   }
 }
 
+
+
+/* 
+CSS PARA NAV BAR */
+#navBar {
+    background: rgba(135, 6, 227, 0.591); /* Color suave con transparencia */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque de fondo */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Links */
 .link {
-  text-decoration: none;
+    text-decoration: none;
+
+}
+
+/* Hover & Active */
+.link:hover {
+    background: rgba(154, 29, 243, 0.15);
+    color: #9a1df3;
+    transform: translateY(-1px);
+}
+
+/* Estilo especial para cerrar sesión */
+.logout-btn {
+    color: #e74c3c !important;
+}
+
+.logout-btn:hover {
+    background: rgba(231, 76, 60, 0.1) !important;
+}
+
+/* Contenedor principal */
+main {
+    padding: 2rem;
+    max-width: 100%;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+/* CSS PARA TABLA PEDIDOS */
+.detalle-pedido {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+
+.detalle-pedido h2 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid #3498db;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+
+.detalle-pedido p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.tablaPedido {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    border: none !important; /* Quitamos el border="1" del HTML */
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.tablaPedido thead tr {
+    background-color: #34495e !important; /* Color oscuro moderno */
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.tablaPedido th, 
+.tablaPedido td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #edf2f7;
+}
+
+
+.tablaPedido tbody tr:nth-of-type(even) {
+    background-color: #f8f9fa;
+}
+
+
+.tablaPedido tbody tr:hover {
+    background-color: #f1f4f6;
+    transition: background 0.2s ease;
+}
+
+
+.tablaPedido tbody tr:last-of-type td {
+    border-bottom: 2px solid #3498db;
+}
+
+.tablaPedido td:last-child {
+    font-weight: bold;
+    color: #2980b9;
 }

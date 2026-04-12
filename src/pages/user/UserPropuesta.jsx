@@ -7,13 +7,12 @@ import { useBasic } from "../../context/basicContext";
 const UserPoposal = () => {
     const { proposalId } = useParams();
     const url = `http://localhost:3003/API/proposals/${proposalId}`;
-    const { data } = useFetch(url);
+    const { datafetch } = useFetch(url);
     const [unidades, setUnidades] = useState({});
     const { user } = useBasic();
 
-    if (!data) return <p>Cargando...</p>;
-    const { nombre, articulo } = data;
-
+    if (!datafetch) return <p>Cargando...</p>;
+    const { nombre, articulo } = datafetch;
     const handleChange = (cn, value) => {
         setUnidades({
             ...unidades,
@@ -23,7 +22,6 @@ const UserPoposal = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const itemsParaEnviar = articulo
             .filter(item => unidades[item.cn] > 0) 
             .map(item => ({
@@ -31,14 +29,11 @@ const UserPoposal = () => {
                 descripcion: item.descripcion, 
                 unidades: parseInt(unidades[item.cn], 10) 
             }));
-
         const bodyCompleto = {
             usuario: user.email,
             laboratorio: nombre,
-            items: itemsParaEnviar
+            articulo: itemsParaEnviar
         };
-
-
         try {
             await fetch(`http://localhost:3003/API/orders`, {
                 method: 'POST',

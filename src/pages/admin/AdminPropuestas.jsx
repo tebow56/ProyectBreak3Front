@@ -7,12 +7,12 @@ import { useBasic } from "../../context/basicContext";
 const UserPoposal = () => {
     const { proposalId } = useParams();
     const url = `http://localhost:3003/API/proposals/${proposalId}`;
-    const { data } = useFetch(url);
+    const { datafetch } = useFetch(url);
     const [unidades, setUnidades] = useState({});
     const { user } = useBasic();
 
-    if (!data) return <p>Cargando...</p>;
-    const { nombre, articulo } = data;
+    if (!datafetch) return <p>Cargando...</p>;
+    const { nombre, articulo } = datafetch;
 
     const handleChange = (cn, value) => {
         setUnidades({

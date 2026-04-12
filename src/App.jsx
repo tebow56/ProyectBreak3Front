@@ -1,5 +1,4 @@
 import {BrowserRouter as Router, Routes, Route, data} from 'react-router-dom'
-import {useState, useEffect} from 'react'
 import './App.css'
 import UserHome from './pages/user/UserHome'
 import UserHistorial from './pages/user/UserHistorial'
@@ -16,6 +15,8 @@ import UserProposal from './pages/user/UserPropuesta'
 import AdminProposal from './pages/admin/AdminPropuestas'
 import AdminNuevaPropuesta from './pages/admin/AdminNuevaPropuesta'
 import AltaCliente from './pages/AltaCliente'
+import UserPedido from './pages/user/UserPedido'
+import AdminPedido from './pages/admin/AdminPedido'
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
           <Route index element={<UserHome />} />
           <Route path= "/user/propuestas/:proposalId" element={<UserProposal/> } />
           <Route path="/user/historial" element={<UserHistorial />} />
+          <Route path= "/user/historial/:orderId" element= {<UserPedido/>}/>
           <Route path="/user/perfil" element={<UserPerfil />} />
         </Route>
                 <Route path="/admin" element={
@@ -46,6 +48,7 @@ function App() {
           <Route path="/admin/propuestas/nueva" element={<AdminNuevaPropuesta />} />
           <Route path= "/admin/propuestas/:proposalId" element={<AdminProposal/> } />
           <Route path="/admin/historial" element={<AdminHistorial />} />
+          <Route path="/admin/historial/:orderId" element={<AdminPedido/>} />
           <Route path="/admin/perfil" element={<AdminPerfil />} />
         </Route>
       </Routes>

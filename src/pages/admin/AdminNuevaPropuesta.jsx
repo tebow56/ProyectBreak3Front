@@ -26,13 +26,13 @@ const handleSubmit = async (e) => {
     return (
         <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h1>Nueva Propuesta</h1>
-            <form style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '500px' }} onSubmit={handleSubmit}>
+            <form style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '500px', textAlign:'left' }} onSubmit={handleSubmit}>
                 <label>
                     Nombre del laboratorio:
                     <input type="text" name="nombre" />
                 </label>
                 <label>
-                    Mes:
+                    Mes:        
                     <input type="text" name="mes" />
                 </label>
                 <input type="file"  name="articulo" />

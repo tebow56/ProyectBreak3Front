@@ -51,7 +51,7 @@ const ListadoPropuestasAdmin = ({ data, refreshData }) => {
             <h2>Listado de Propuestas</h2>
             <ul className="listadoPropuestas" style={{listStyle:"none"}}>
                 {data.map((proposal) => ( 
-                    <li key={proposal._id} style={{ display:"flex", flexDirection:"row", justifyContent:"space-around",border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
+                    <li key={proposal._id} style={{ display:"flex", flexDirection:"row", justifyContent:"space-around",border: '1px solid #ccc',gap:'50px', padding: '10px', marginBottom: '10px' }}>
                         <h3><Link className="link" to={`/admin/propuestas/${proposal._id}`}>{proposal.nombre} ({proposal.mes})</Link></h3>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent: 'space-between' }}>
                         <p style={{borderRadius:'5px', backgroundColor: proposal.activo === true ? "#15ff0085" : "#ff37008f" }}>

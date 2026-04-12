@@ -2,7 +2,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { useBasic } from "./basicContext";
 import { useNavigate, useLocation } from "react-router-dom";
-import miLogo from "../assets/logolabotica(1).jpg"
+
 
 
 
@@ -15,10 +15,9 @@ export const useAuth = () => {
 }
 
 export const AuthProvider = ({ children }) => {
-        const { user, setUser, isLoading, setIsLoading } = useBasic();
+        const { user, setUser, isLoading, setIsLoading, userData, setUserData } = useBasic();
         const navigate = useNavigate();
         const location = useLocation();
-
         useEffect(() => {
             
             const fetchUser = async () => {
@@ -28,21 +27,30 @@ export const AuthProvider = ({ children }) => {
                         credentials: 'include'
                     });
                     if (response.ok) {
-                        
-                        const userData = await response.json();
-                        setUser(userData);
-                            if (userData.admin === true && !location.pathname.startsWith('/admin')) {
-                                navigate('/admin');
-                            } else if (userData.admin === false && location.pathname.startsWith('/admin')) {
-                                navigate ('/user');
-                            }
+                    const userInfo = await response.json();
+                    setUser(userInfo);
+                    if(!userData) {
+                        try {
+                            const findresponse= await fetch(`http://localhost:3003/API/users/getbyemail/${userInfo.email}`, {
+                                credentials: 'include'
+                            });
+                            const newUserData= await findresponse.json()
+                            setUserData(newUserData)
+                        }catch (error){
+                            console.error('Error:', error)
+                        }}
+                    if (userInfo.admin === true && !location.pathname.startsWith('/admin')) {
+                            navigate('/admin');
+                    } else if (userInfo.admin === false && location.pathname.startsWith('/admin')) {
+                            navigate ('/user');
+                    }
                     } else {
                             navigate('/login');
                             setUser(null);
                         }
                     }
                     catch (error) {
-                        console.error('Error fetching user:', error);
+                        console.error('Error:', error);
                         setUser(null);
                     } finally {
                         setIsLoading(false);

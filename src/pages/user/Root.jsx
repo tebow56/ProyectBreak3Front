@@ -30,7 +30,7 @@ const logout = async () => {
                     <Link to="/user" className='link'>Inicio</Link>
                     <Link to="/user/Historial" className='link'>Historial</Link>
                     <Link to="/user/Perfil" className='link'>Perfil</Link>
-                    <Link to="/user/login" className='link' onClick={logout}>
+                    <Link to="/login" className='link' onClick={logout}>
                         Cerrar sesión
                     </Link>
                 </nav>

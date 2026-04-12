@@ -30,8 +30,8 @@ const Login = () => {
                 });
                 
                 if (response.ok) {
-                    const userData = await response.json();
-                    setUser(userData);
+                    const uData = await response.json();
+                    setUser(uData);
                     const findUser = async (email) => {
                         try {
                         const findresponse= await fetch(`http://localhost:3003/API/users/getbyemail/${email}`, {
