@@ -1,14 +1,14 @@
 import { Outlet, Link } from 'react-router-dom';
 import { useBasic } from "../../context/basicContext";
 
-
+const apiUrl = import.meta.env.VITE_API_URL;
 
 function Root() {
 const { user, setUser, isLoading, setIsLoading } = useBasic();
 
 const logout = async () => {
     try {
-        const response = await fetch('https://glb-2wfb.onrender.com/API/auth/logout', {
+        const response = await fetch(`${apiUrl}/API/auth/logout`, {
             method: 'POST',
             credentials: 'include'
         });

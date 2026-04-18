@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 
 
-
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const authContext = createContext();
 
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
             const fetchUser = async () => {
                 setIsLoading(true)
                     try {
-                    const response = await fetch('https://glb-2wfb.onrender.com/API/auth/active-session', {
+                    const response = await fetch(`${apiUrl}/API/auth/active-session`, {
                         credentials: 'include'
                     });
                     if (response.ok) {
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
                     setUser(userInfo);
                     if(!userData) {
                         try {
-                            const findresponse= await fetch(`https://glb-2wfb.onrender.com/API/users/getbyemail/${userInfo.email}`, {
+                            const findresponse= await fetch(`${apiUrl}/API/users/getbyemail/${userInfo.email}`, {
                                 credentials: 'include'
                             });
                             const newUserData= await findresponse.json()

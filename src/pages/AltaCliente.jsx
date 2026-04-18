@@ -3,6 +3,7 @@ import milogo from '../assets/logolabotica(1).jpg'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const AltaCliente = ()=> {
     const [respuesta, setRespuesta] = useState ('')
@@ -20,7 +21,7 @@ const AltaCliente = ()=> {
     useEffect(()=>{
         const useFetch =async ()=> {
             try {
-                const response = await fetch('https://glb-2wfb.onrender.com/API/codes',{
+                const response = await fetch(`${apiUrl}/API/codes`,{
                     method: 'GET',
                     credentials: 'include', 
                     })
@@ -46,7 +47,7 @@ const handleSumbit = async (e)=>{
         return
     }
         try {
-            const response = await fetch ('https://glb-2wfb.onrender.com/API/users/create', {
+            const response = await fetch (`${apiUrl}/API/users/create`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

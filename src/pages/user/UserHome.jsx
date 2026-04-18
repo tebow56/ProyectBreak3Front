@@ -1,12 +1,12 @@
 import ListadoPropuestasUsers from "../../components/ListadoPropuestasUsers"
 import { useState, useEffect } from "react";
-
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const UserHome = () => {
     const [data, setData] = useState([]);
     const getdata = async () => {
         try {
-            const response = await fetch('https://glb-2wfb.onrender.com/API/proposals', {
+            const response = await fetch(`${apiUrl}/API/proposals`, {
                 method: 'GET',
                 credentials: 'include'
             });

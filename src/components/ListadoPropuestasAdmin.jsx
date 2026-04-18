@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const ListadoPropuestasAdmin = ({ data, refreshData }) => {
     const handleToggleStatus = (proposal) => {
@@ -8,7 +8,7 @@ const ListadoPropuestasAdmin = ({ data, refreshData }) => {
             const newStatus = proposal.activo === false ? true : false
             console.log(proposalid, newStatus)
             try {
-            const response = await fetch (`https://glb-2wfb.onrender.com/API/proposals/${proposalid}`, {
+            const response = await fetch (`${apiUrl}/API/proposals/${proposalid}`, {
                 method: 'PUT',
                 credentials: 'include',
                 body: JSON.stringify({ activo: newStatus }),
@@ -30,7 +30,7 @@ const ListadoPropuestasAdmin = ({ data, refreshData }) => {
     const handleDeleteProposal = (proposalId) => {
         const deleteFetch = async () => {
             try {
-                const respone = await fetch(`https://glb-2wfb.onrender.com/API/proposals/${proposalId}`, {
+                const respone = await fetch(`${apiUrl}/API/proposals/${proposalId}`, {
                     method: 'DELETE',
                     credentials: 'include'
                 });

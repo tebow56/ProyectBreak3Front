@@ -4,9 +4,10 @@ import useFetch from "../../hooks/useFetch";
 import { useBasic } from "../../context/basicContext";
 
 
+const apiUrl = import.meta.env.VITE_API_URL;
 const UserPoposal = () => {
     const { proposalId } = useParams();
-    const url = `https://glb-2wfb.onrender.com/API/proposals/${proposalId}`;
+    const url = `${apiUrl}/API/proposals/${proposalId}`;
     const { datafetch } = useFetch(url);
     const [unidades, setUnidades] = useState({});
     const { user } = useBasic();
@@ -25,7 +26,7 @@ const UserPoposal = () => {
         e.preventDefault();
 
         const itemsParaEnviar = articulo
-            .filter(item => unidades[item.cn] > 0) // Solo enviamos si hay cantidad
+            .filter(item => unidades[item.cn] > 0) 
             .map(item => ({
                 cn: item.cn,                
                 descripcion: item.descripcion, 
@@ -40,7 +41,7 @@ const UserPoposal = () => {
 
 
         try {
-            await fetch(`https://glb-2wfb.onrender.com/API/orders`, {
+            await fetch(`${apiUrl}/API/orders`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },

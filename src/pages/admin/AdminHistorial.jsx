@@ -1,10 +1,12 @@
 
 import useFetch from "../../hooks/useFetch";
-
 import ListadoHistorialAdmin from "../../components/ListadoHistorialAdmin";
 
+
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const AdminHistorial = () => {
-    const url = 'https://glb-2wfb.onrender.com/API/orders'
+    const url = `${apiUrl}/API/orders`
     const { datafetch } = useFetch(url);
   
     if (!datafetch)return <p>Cargando...</p>

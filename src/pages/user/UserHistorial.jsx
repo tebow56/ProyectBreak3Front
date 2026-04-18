@@ -3,9 +3,9 @@ import useFetch from "../../hooks/useFetch";
 import { useState, useEffect } from "react";
 import HistorialUser from "../../components/ListadoHistorialUser";
 
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const UserHistorial = () => {
-    const url = 'https://glb-2wfb.onrender.com/API/orders'
+    const url = `${apiUrl}/API/orders`
     const { datafetch } = useFetch(url);
     const {user} = useBasic()
     const [orders,setOrders]=useState([])

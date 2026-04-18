@@ -1,4 +1,5 @@
 
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const AdminNuevaPropuesta = ()  => {
 const handleSubmit = async (e) => {
@@ -6,7 +7,7 @@ const handleSubmit = async (e) => {
     try {
         const formData = new FormData(e.target);
 
-        const response = await fetch('https://glb-2wfb.onrender.com/API/proposals', {
+        const response = await fetch(`${apiUrl}/API/proposals`, {
             method: 'POST',
             credentials: 'include',
             body: formData

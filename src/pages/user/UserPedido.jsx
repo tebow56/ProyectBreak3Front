@@ -1,10 +1,10 @@
 
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-
+const apiUrl = import.meta.env.VITE_API_URL;
 const UserPedido = ()=>{
     const { orderId } = useParams();
-    const url = `https://glb-2wfb.onrender.com/API/orders/${orderId}`;
+    const url = `${apiUrl}API/orders/${orderId}`;
     const { datafetch } = useFetch(url);
 
     if (!datafetch) return <p>Cargando...</p>;

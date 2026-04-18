@@ -2,9 +2,11 @@ import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { CSVLink } from "react-csv";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const AdminPedido = ()=>{
     const { orderId } = useParams();
-    const url = `https://glb-2wfb.onrender.com/API/orders/${orderId}`;
+    const url = `${apiUrl}API/orders/${orderId}`;
     const { datafetch } = useFetch(url);
     
 

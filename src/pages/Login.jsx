@@ -5,6 +5,7 @@ import milogo from '../assets/logolabotica(1).jpg'
 import { Link } from 'react-router-dom';
 
 
+const apiUrl = import.meta.env.VITE_API_URL;
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -20,7 +21,7 @@ const Login = () => {
             setError(null);
             
             try {
-                const response = await fetch('https://glb-2wfb.onrender.com/API/auth/login', {
+                const response = await fetch(`${apiUrl}/API/auth/login`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -34,7 +35,7 @@ const Login = () => {
                     setUser(uData);
                     const findUser = async (email) => {
                         try {
-                        const findresponse= await fetch(`https://glb-2wfb.onrender.com/API/users/getbyemail/${email}`, {
+                        const findresponse= await fetch(`${apiUrl}/API/users/getbyemail/${email}`, {
                             credentials: 'include'
                         });
                         if (findresponse.ok) {
@@ -73,7 +74,7 @@ const Login = () => {
     
     const checkSession = async () => {
         try {
-            const response = await fetch('https://glb-2wfb.onrender.com/API/auth/active-session', {
+            const response = await fetch(`${apiUrl}/API/auth/active-session`, {
                 credentials: 'include'
             });
             if (response.ok) {
