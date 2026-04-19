@@ -46,7 +46,7 @@
 }
 
 .link-nav {
-  color: var(-purple);
+  color: var(--purple);
   background: rgba(167, 139, 250, 0.1);
 }
 
