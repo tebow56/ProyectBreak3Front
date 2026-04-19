@@ -9,7 +9,7 @@ const UserPedido = ()=>{
 
     if (!datafetch) return <p>Cargando...</p>;
     
-    const {laboratorio, articulo, createdAt} = datafetch
+    const {laboratorio, articulo, createdAt, observaciones} = datafetch
 
     console.log(datafetch)
 
@@ -36,6 +36,14 @@ const UserPedido = ()=>{
                         </tr>
                     ))}
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colSpan="3" style={{textAlign:"center"}}>
+                            {observaciones}    
+                        </td>
+                    </tr>
+                </tfoot>
+
             </table>
 
             {!articulo && <p>No hay artículos en este pedido.</p>}

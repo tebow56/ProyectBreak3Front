@@ -4,7 +4,7 @@ const ListadoHistorialUser = ({orders})=>{
     
     return (
         <>
-            <div> 
+            <div style={{padding:"20px",height:"600px", width:'500px', overflowY:"auto"}}> 
                 <h2>Pedidos Realizados</h2>
                     <ul className="listadoPedidos" style={{listStyle:"none"}}>
                         {orders.map((order) => ( 

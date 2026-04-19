@@ -309,3 +309,7 @@ main {
     font-weight: bold;
     color: #2980b9;
 }
+
+.detalle-pedido tfoot {
+  width: 100%;
+}

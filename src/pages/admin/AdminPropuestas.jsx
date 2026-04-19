@@ -11,6 +11,7 @@ const UserPoposal = () => {
     const { datafetch } = useFetch(url);
     const [unidades, setUnidades] = useState({});
     const { user } = useBasic();
+    const [observaciones, setObservaciones]= useState('')
 
     if (!datafetch) return <p>Cargando...</p>;
     const { nombre, articulo } = datafetch;
@@ -21,6 +22,12 @@ const UserPoposal = () => {
             [cn]: value
         });
     };
+    
+    const {createdAt}= datafetch
+    const handleChangeObservaciones= (e)=> {
+        e.preventDefault();
+        setObservaciones(e.target.value)
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -54,33 +61,56 @@ const UserPoposal = () => {
     };
 
     return (
-        <div style={{ padding: '20px' }}>
-            <h1>{nombre}</h1>
-            <div style={{ display: 'flex',justifyContent: 'space-evenly', gap: '10px', fontWeight: 'bold', marginBottom: '10px' }}>
-            <p>CN</p><p>Descripción</p><p>Unidades</p>
-             </div>
+        <div className="detalle-pedido">
+            <h2>{nombre}</h2>
+            <p>Fecha de creacion: {new Date(createdAt).toLocaleDateString()}</p>
             <form onSubmit={handleSubmit}>
-                {articulo && articulo.map((item) => (
-                    <div key={item.cn} style={{ marginBottom: '15px', borderBottom: '1px solid #eee', paddingBottom: '10px' }}>
-                        <strong style={{ marginRight: '10px',display: 'inline-block', minWidth: '150px' }}>{item.cn}</strong>
-                        <span style={{ marginRight: '20px', display: 'inline-block', minWidth: '400px', textAlign: 'left'    }}>{item.descripcion}</span>
-                        
-                        <input 
-                            type="number" 
-                            min="0" 
-                            placeholder="Cant."
-                            value={unidades[item.cn] || ""} 
-                            onChange={(e) => handleChange(item.cn, e.target.value)}
-                            style={{ width: '60px' }}
-                        />
-                    </div>
-                ))}
+            <table className="tablaPedido" border="1" style={{ width: '100%', textAlign: 'left', borderCollapse: 'collapse' }}>
+                <thead>
+                    <tr style={{ backgroundColor: '#f2f2f2' }}>
+                        <th>CN</th>
+                        <th>Descripción</th>
+                        <th>Unidades</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {articulo && articulo.map((item) => (
+                        <tr key={item._id}>
+                            <td>{item.cn}</td>
+                            <td>{item.descripcion}</td>
+                            <td>
+                                <input 
+                                    type="number" 
+                                    min="0" 
+                                    placeholder="Cant."
+                                    value={unidades[item.cn] || ""} 
+                                    onChange={(e) => handleChange(item.cn, e.target.value)}
+                                    style={{ width: '60px' }}
+                                />
+                            </td>
+                        </tr>
+                    ))}
+
+
                 
-                <button type="submit" style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colSpan="3">    
+                            <textarea type="text" style={{width:'100%', height:'80px', boxSizing: "border-box"}} onChange={handleChangeObservaciones} placeholder="Escribir observaciones,artículos que no están en la propuesta, aclaraciones... "></textarea>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+                    <button type="submit" style={{ marginTop: '20px', padding: '10px 20px', backgroundColor: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }} >
                     Enviar Propuesta
-                </button>
+                    </button>
             </form>
+
+            {!articulo && <p>No hay artículos en este pedido.</p>}
         </div>
+                
     );
 };
 

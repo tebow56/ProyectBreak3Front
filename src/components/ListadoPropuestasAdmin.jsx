@@ -47,7 +47,7 @@ const ListadoPropuestasAdmin = ({ data, refreshData }) => {
 
 
     return (
-        <div style={{ padding: '20px' }}> 
+        <div style={{padding:"20px",height:"600px",width:'500px', overflowY:"auto"}}> 
             <h2>Listado de Propuestas</h2>
             <ul className="listadoPropuestas" style={{listStyle:"none"}}>
                 {data.map((proposal) => ( 

@@ -80,7 +80,7 @@ const Login = () => {
             if (response.ok) {
                 const userData = await response.json();
                 setUser(userData);
-                navigate(userData.admin ? '/admin' : '/'); 
+                navigate(userData.admin ? '/admin' : '/user'); 
             }
         } catch (error) {
             console.error('Error checking session:', error);
@@ -92,7 +92,7 @@ const Login = () => {
 
     return (
         <div>
-            <img src={milogo} alt="Logo"  style={{width: '200px', height: 'auto'}}/>
+            <img src={milogo} alt="Logo"  style={{width: '300px', height: 'auto'}}/>
             <h1>Iniciar sesión</h1>
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: '300px', margin: '0 auto' }}>
                 <label htmlFor="email">Email</label>

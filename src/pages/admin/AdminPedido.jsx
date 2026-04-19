@@ -6,13 +6,13 @@ const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3003"
 
 const AdminPedido = ()=>{
     const { orderId } = useParams();
-    const url = `${apiUrl}API/orders/${orderId}`;
+    const url = `${apiUrl}/API/orders/${orderId}`;
     const { datafetch } = useFetch(url);
     
 
     if (!datafetch) return <p>Cargando...</p>;
     
-    const {laboratorio, articulo, createdAt,usuario} = datafetch
+    const {laboratorio, articulo, createdAt,usuario, observaciones} = datafetch
 
     const csvData = [
         ["Fecha de creación:", createdAt],
@@ -23,7 +23,8 @@ const AdminPedido = ()=>{
             item.cn || '', 
             item.descripcion || '', 
             item.unidades || 0
-        ])
+        ]),
+        ["Observaciones:", observaciones || '']
     ];
     const fileName = `pedido_${laboratorio}_${orderId}.csv`
 
@@ -50,6 +51,14 @@ const AdminPedido = ()=>{
                         </tr>
                     ))}
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td colSpan="3" style={{textAlign:"center"}}>
+                            {observaciones}    
+                        </td>
+                    </tr>
+                </tfoot>
+
             </table>
             {articulo && articulo.length > 0 && csvData.length > 0 && (
                 <CSVLink 
