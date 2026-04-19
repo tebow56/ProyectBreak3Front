@@ -21,6 +21,9 @@ export const AuthProvider = ({ children }) => {
         useEffect(() => {
             
             const fetchUser = async () => {
+                    if (location.pathname === '/login' || location.pathname === '/register') {
+                    return; 
+                }
                 setIsLoading(true)
                     try {
                     const response = await fetch(`${apiUrl}/API/auth/active-session`, {
@@ -45,8 +48,9 @@ export const AuthProvider = ({ children }) => {
                             navigate ('/user');
                     }
                     } else {
-                            navigate('/login');
-                            setUser(null);
+                        setUser(null)    
+                        navigate('/login');
+                            
                         }
                     }
                     catch (error) {
