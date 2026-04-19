@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ListadoPropuestasAdmin from "../../components/ListadoPropuestasAdmin";
 
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3003"
 
 const AdminHome = () => {
     const [data, setData] = useState([]);

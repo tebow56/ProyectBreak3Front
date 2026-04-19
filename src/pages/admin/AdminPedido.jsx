@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { CSVLink } from "react-csv";
 
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3003"
 
 const AdminPedido = ()=>{
     const { orderId } = useParams();

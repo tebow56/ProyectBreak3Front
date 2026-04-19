@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 
 
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3003"
 
 const authContext = createContext();
 

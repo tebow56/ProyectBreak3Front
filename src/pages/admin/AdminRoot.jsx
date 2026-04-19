@@ -3,7 +3,7 @@ import { useBasic } from "../../context/basicContext";
 import { useNavigate } from 'react-router-dom';
 
 
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3003"
 
 const AdminRoot = () =>     {
     const { user, setUser, isLoading, setIsLoading,setUserData } = useBasic();

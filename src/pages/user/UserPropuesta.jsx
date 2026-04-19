@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { useBasic } from "../../context/basicContext";
 
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3003"
 const UserPoposal = () => {
     const { proposalId } = useParams();
     const url = `${apiUrl}/API/proposals/${proposalId}`;

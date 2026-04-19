@@ -5,7 +5,7 @@ import milogo from '../assets/logolabotica(1).jpg'
 import { Link } from 'react-router-dom';
 
 
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3003"
 
 const Login = () => {
     const [email, setEmail] = useState('');

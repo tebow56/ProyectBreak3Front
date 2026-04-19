@@ -3,7 +3,7 @@ import useFetch from "../../hooks/useFetch";
 import ListadoHistorialAdmin from "../../components/ListadoHistorialAdmin";
 
 
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3003"
 
 const AdminHistorial = () => {
     const url = `${apiUrl}/API/orders`

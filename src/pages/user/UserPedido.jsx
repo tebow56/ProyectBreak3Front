@@ -1,7 +1,7 @@
 
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3003"
 const UserPedido = ()=>{
     const { orderId } = useParams();
     const url = `${apiUrl}API/orders/${orderId}`;
